@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Enums
+// ---------------------------------------------------------------------------
+
+enum InterviewStatus {
+  CREATED
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+}
+
+enum InterviewType {
+  BEHAVIORAL
+  TECHNICAL
+}
+
+enum InterviewLanguage {
+  ENGLISH
+  ARABIC
+}
+
+enum Difficulty {
+  JUNIOR
+  MID
+  SENIOR
+}
+
+// ---------------------------------------------------------------------------
+// Auth.js Prisma-adapter models
+// (Session + VerificationToken are unused under JWT sessions but kept so the
+//  schema stays adapter-compatible for future OAuth or DB-session additions.)
+// ---------------------------------------------------------------------------
+
+model User {
+  id            String      @id @default(cuid())
+  name          String?
+  email         String      @unique
+  emailVerified DateTime?
+  image         String?
+  passwordHash  String?     // bcrypt/argon2 only (Principle X); populated in Phase 2
+  accounts      Account[]
+  sessions      Session[]
+  interviews    Interview[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ---------------------------------------------------------------------------
+// Domain models
+// ---------------------------------------------------------------------------
+
+model Interview {
+  id         String            @id @default(cuid())
+  userId     String
+  type       InterviewType
+  field      String?           // required only when type = TECHNICAL (enforced in app logic)
+  language   InterviewLanguage
+  difficulty Difficulty
+  status     InterviewStatus   @default(CREATED)
+  transcript Json?             // captured on call end (Phase 4)
+  vapiCallId String?
+  result     Result?
+  user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  @@index([userId])
+}
+
+model Result {
+  id              String    @id @default(cuid())
+  interviewId     String    @unique
+  overallScore    Int       // 0–100
+  dimensionScores Json      // per-dimension breakdown
+  summary         String
+  improvements    Json      // 2–3 improvement points
+  interview       Interview @relation(fields: [interviewId], references: [id], onDelete: Cascade)
+  createdAt       DateTime  @default(now())
+}
