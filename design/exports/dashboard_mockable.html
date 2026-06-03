@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mockable - Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fcf9f5",
+                        "on-surface": "#1c1c1a",
+                        "secondary-container": "#dc2c4f",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffdadb",
+                        "outline-variant": "#cbc3d7",
+                        "primary-container": "#8455ef",
+                        "surface-variant": "#e5e2de",
+                        "on-secondary-fixed": "#40000d",
+                        "surface-bright": "#fcf9f5",
+                        "on-background": "#1c1c1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "surface-tint": "#6d3bd7",
+                        "secondary-fixed-dim": "#ffb2b7",
+                        "inverse-on-surface": "#f3f0ec",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#31302e",
+                        "on-tertiary-fixed": "#102000",
+                        "surface-container-highest": "#e5e2de",
+                        "secondary": "#b90538",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#518200",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-tertiary-fixed-variant": "#304f00",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae8e4",
+                        "surface": "#fcf9f5",
+                        "tertiary-fixed": "#acf847",
+                        "outline": "#7b7486",
+                        "primary-fixed": "#e9ddff",
+                        "surface-container-low": "#f6f3ef",
+                        "on-surface-variant": "#494454",
+                        "tertiary-fixed-dim": "#91db2a",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#5516be",
+                        "surface-container": "#f0ede9",
+                        "surface-dim": "#dcdad6",
+                        "tertiary": "#3f6700",
+                        "on-tertiary-container": "#f9ffea",
+                        "error": "#ba1a1a",
+                        "primary": "#6b38d4",
+                        "inverse-primary": "#d0bcff",
+                        "on-secondary-fixed-variant": "#92002a",
+                        "on-primary-fixed": "#23005c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "lg": "48px",
+                        "margin-mobile": "16px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-xl-mobile": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-xl-mobile": ["36px", { "lineHeight": "44px", "fontWeight": "800" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .gradient-primary {
+            background: linear-gradient(135deg, #6b38d4 0%, #b90538 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex flex-col pt-24">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-[0px_10px_30px_rgba(109,59,215,0.08)]">
+<div class="flex items-center gap-md">
+<span class="font-headline-md text-headline-md font-extrabold text-primary tracking-tight">Mockable</span>
+<div class="hidden md:flex items-center gap-sm ml-lg">
+<a class="text-primary font-bold border-b-2 border-secondary font-body-md text-body-md px-2 py-1" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md text-body-md px-2 py-1" href="#">Interviews</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md text-body-md px-2 py-1" href="#">Feedback</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md text-body-md px-2 py-1" href="#">Pricing</a>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="hidden md:inline-flex bg-primary text-on-primary font-label-md text-label-md px-6 py-3 rounded-full hover:scale-105 active:scale-95 transition-transform shadow-[0px_8px_20px_rgba(107,56,212,0.3)]">Get Started</button>
+<button aria-label="Account" class="text-primary hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop py-lg max-w-[1440px] mx-auto w-full">
+<!-- Header Section -->
+<header class="mb-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface mb-xs">Welcome back, Alex!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Ready to ace your next interview?</p>
+</div>
+<div class="flex items-center gap-sm">
+<div class="bg-secondary-container text-on-secondary px-4 py-2 rounded-full font-label-md text-label-md flex items-center gap-2 shadow-[0px_4px_12px_rgba(220,44,79,0.2)]">
+<span class="material-symbols-outlined text-sm">notifications_active</span>
+<span>2 New Insights</span>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="bento-grid">
+<!-- Quick Start Card (Spans 8 cols on desktop, full on mobile) -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest rounded-xl p-lg shadow-[0px_20px_50px_rgba(107,56,212,0.08)] border border-surface-variant relative overflow-hidden flex flex-col justify-between min-h-[320px]">
+<!-- Decorative Background Element -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
+<div class="relative z-10">
+<div class="bg-primary-container/10 text-primary w-fit p-3 rounded-2xl mb-md">
+<span class="material-symbols-outlined text-3xl fill-icon">rocket_launch</span>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-sm">Quick Start</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-lg">Jump straight into a simulated technical or behavioral interview tailored to your target role.</p>
+</div>
+<div class="relative z-10 flex gap-md flex-wrap">
+<button class="gradient-primary text-on-primary font-label-md text-label-md px-8 py-4 rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0px_12px_24px_rgba(107,56,212,0.3)] flex items-center gap-2">
+<span class="material-symbols-outlined">play_arrow</span>
+                        Start New Interview
+                    </button>
+<button class="bg-surface text-primary border border-primary/20 font-label-md text-label-md px-8 py-4 rounded-full hover:bg-primary/5 transition-colors duration-300 flex items-center gap-2">
+<span class="material-symbols-outlined">settings</span>
+                        Configure
+                    </button>
+</div>
+</div>
+<!-- Stats/Progress Card (Spans 4 cols on desktop, full on mobile) -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-lowest rounded-xl p-md shadow-[0px_15px_40px_rgba(0,0,0,0.04)] border border-surface-variant flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Weekly Goal</h3>
+<span class="material-symbols-outlined text-outline">trending_up</span>
+</div>
+<div class="flex-grow flex flex-col justify-center items-center py-sm">
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-width="3"></path>
+<path class="text-tertiary-fixed-dim drop-shadow-[0_0_8px_rgba(145,219,42,0.5)]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="75, 100" stroke-width="3"></path>
+</svg>
+<div class="absolute text-center">
+<span class="block font-headline-lg text-headline-lg text-on-surface">3/4</span>
+<span class="block font-label-md text-label-md text-on-surface-variant">Sessions</span>
+</div>
+</div>
+</div>
+<div class="bg-tertiary-container/10 rounded-lg p-3 text-center">
+<p class="font-label-md text-label-md text-tertiary-fixed-dim">Almost there! 1 more session to go.</p>
+</div>
+</div>
+<!-- Recent Interviews List (Spans full width) -->
+<div class="col-span-12 bg-surface-container-lowest rounded-xl p-lg shadow-[0px_10px_30px_rgba(0,0,0,0.03)] border border-surface-variant mt-md">
+<div class="flex justify-between items-center mb-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Recent Interviews</h2>
+<button class="text-primary font-label-md text-label-md hover:underline flex items-center gap-1">
+                        View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Item 1 -->
+<div class="group flex flex-col md:flex-row justify-between md:items-center p-md rounded-lg border border-surface-variant hover:border-primary/30 hover:shadow-[0px_8px_24px_rgba(107,56,212,0.06)] transition-all bg-surface-bright cursor-pointer gap-sm md:gap-0">
+<div class="flex items-center gap-md">
+<div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined fill-icon">work</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Product Manager</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_today</span> Oct 24, 2023
+                                </p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-lg w-full md:w-auto">
+<div class="flex items-center gap-3">
+<div class="w-32 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim w-[85%]"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold w-12 text-right">85/100</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group flex flex-col md:flex-row justify-between md:items-center p-md rounded-lg border border-surface-variant hover:border-primary/30 hover:shadow-[0px_8px_24px_rgba(107,56,212,0.06)] transition-all bg-surface-bright cursor-pointer gap-sm md:gap-0">
+<div class="flex items-center gap-md">
+<div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined fill-icon">code</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Frontend Developer</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_today</span> Oct 20, 2023
+                                </p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-lg w-full md:w-auto">
+<div class="flex items-center gap-3">
+<div class="w-32 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim w-[92%]"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold w-12 text-right">92/100</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group flex flex-col md:flex-row justify-between md:items-center p-md rounded-lg border border-surface-variant hover:border-primary/30 hover:shadow-[0px_8px_24px_rgba(107,56,212,0.06)] transition-all bg-surface-bright cursor-pointer gap-sm md:gap-0">
+<div class="flex items-center gap-md">
+<div class="bg-surface-container w-12 h-12 rounded-full flex items-center justify-center text-primary group-hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined fill-icon">groups</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface">Behavioral - Leadership</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_today</span> Oct 15, 2023
+                                </p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-lg w-full md:w-auto">
+<div class="flex items-center gap-3">
+<div class="w-32 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[68%]"></div>
+</div>
+<span class="font-label-md text-label-md text-on-surface font-bold w-12 text-right">68/100</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full px-margin-desktop py-xl flex flex-col md:flex-row justify-between items-center gap-md bg-surface-container-low dark:bg-surface-container-lowest rounded-t-lg mt-auto">
+<div class="font-headline-sm text-headline-sm font-bold text-on-surface dark:text-on-surface">Mockable</div>
+<div class="flex flex-wrap justify-center gap-md font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline transition-all duration-300" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline transition-all duration-300" href="#">Terms of Service</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline transition-all duration-300" href="#">Contact Support</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed underline transition-all duration-300" href="#">Career Tips</a>
+</div>
+<div class="text-on-surface-variant dark:text-surface-variant font-body-md text-body-md">© 2024 Mockable AI. Practice with confidence.</div>
+</footer>
+</body></html>

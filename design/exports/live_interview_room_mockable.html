@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" dir="ltr" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mockable - Live Interview Room</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#304f00",
+                        "tertiary-fixed": "#acf847",
+                        "on-primary-fixed": "#23005c",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed": "#ffdadb",
+                        "on-primary-container": "#fffbff",
+                        "on-background": "#1c1c1a",
+                        "tertiary-container": "#518200",
+                        "primary-fixed": "#e9ddff",
+                        "inverse-surface": "#31302e",
+                        "tertiary": "#3f6700",
+                        "secondary-fixed-dim": "#ffb2b7",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#8455ef",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dcdad6",
+                        "surface": "#fcf9f5",
+                        "surface-container-high": "#eae8e4",
+                        "outline": "#7b7486",
+                        "secondary-container": "#dc2c4f",
+                        "surface-variant": "#e5e2de",
+                        "surface-container": "#f0ede9",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#f9ffea",
+                        "secondary": "#b90538",
+                        "on-surface": "#1c1c1a",
+                        "background": "#fcf9f5",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#6d3bd7",
+                        "outline-variant": "#cbc3d7",
+                        "on-surface-variant": "#494454",
+                        "surface-container-low": "#f6f3ef",
+                        "surface-container-highest": "#e5e2de",
+                        "on-tertiary-fixed": "#102000",
+                        "tertiary-fixed-dim": "#91db2a",
+                        "inverse-primary": "#d0bcff",
+                        "surface-bright": "#fcf9f5",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-secondary-fixed-variant": "#92002a",
+                        "inverse-on-surface": "#f3f0ec",
+                        "primary": "#6b38d4",
+                        "on-secondary-container": "#fffbff",
+                        "on-secondary-fixed": "#40000d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "margin-mobile": "16px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "md": "24px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-xl-mobile": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-xl-mobile": ["36px", { "lineHeight": "44px", "fontWeight": "800" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pulse-orb {
+            animation: pulse 3s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); filter: brightness(1) drop-shadow(0 0 20px rgba(107, 56, 212, 0.2)); }
+            100% { transform: scale(1.05); filter: brightness(1.1) drop-shadow(0 0 40px rgba(107, 56, 212, 0.5)); }
+        }
+        .recording-dot {
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .mic-wave {
+            animation: ripple 2s infinite;
+        }
+        @keyframes ripple {
+            0% { box-shadow: 0 0 0 0 rgba(107, 56, 212, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(107, 56, 212, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(107, 56, 212, 0); }
+        }
+        
+        /* Custom scrollbar for transcript */
+        .transcript-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .transcript-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .transcript-scroll::-webkit-scrollbar-thumb {
+            background-color: #cbc3d7;
+            border-radius: 9999px;
+            border: 2px solid #fcf9f5;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col overflow-hidden font-sans">
+<!-- Top Navigation Bar -->
+<header class="bg-surface/80 backdrop-blur-md shadow-[0_4px_20px_rgba(109,59,215,0.05)] w-full top-0 sticky z-50 flex justify-between items-center px-margin-desktop h-20 shrink-0 border-b border-surface-container-high">
+<!-- Left: Title -->
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="work" data-weight="fill" style="font-variation-settings: 'FILL' 1;">work</span>
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Frontend · Mid · English</h1>
+</div>
+<!-- Center: Timer -->
+<div class="absolute left-1/2 -translate-x-1/2 flex items-center gap-sm bg-surface-container-lowest px-md py-sm rounded-full shadow-sm border border-outline-variant/30">
+<div class="w-2 h-2 rounded-full bg-secondary recording-dot"></div>
+<span class="font-label-md text-label-md text-on-surface tabular-nums">00:14:32</span>
+</div>
+<!-- Right: End Button -->
+<button class="bg-secondary text-on-secondary px-md py-sm rounded-full font-label-md text-label-md hover:bg-secondary-container hover:scale-[1.02] active:scale-[0.98] transition-all shadow-[0_8px_16px_rgba(185,5,56,0.15)] flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="stop_circle">stop_circle</span>
+            End Interview
+        </button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:flex-row overflow-hidden relative z-10 w-full max-w-[1600px] mx-auto">
+<!-- Left Section: AI Immersive -->
+<section class="w-full md:w-[45%] h-full flex flex-col items-center justify-center p-xl relative border-r border-surface-container-high/50 bg-gradient-to-br from-surface to-primary-fixed/10">
+<!-- AI Orb -->
+<div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full flex items-center justify-center mb-lg pulse-orb">
+<img alt="Mockable AI Avatar" class="w-full h-full object-cover rounded-full mix-blend-multiply opacity-90 shadow-[0_20px_50px_rgba(107,56,212,0.15)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiDYG4eCDoxxywdAj6XNOy6zQ9eTTgA63Po2Epzxlpd5qhUgzKscC-ucsAYc9suj5D5ZNEWoctQtFTgW7OVT7u89-P2x4chrBB6Rl-S6El_FeHD8uYw3reeQIJFKmNFxQ8joLeKlShCPGBCuOMIlV6mJjWJhBFvPrBpvcACtRMbjHqwHymzlVY2voLBGbPWEksd1RoxtV3EG1haYBgKsvjEedPeonl4qe_Gyuw9leOaE3xiP9Aq0g4IJomIWX4OLYFfUOpi74CkA"/>
+</div>
+<!-- State Label -->
+<div class="text-center mb-xl">
+<h2 class="font-headline-md text-headline-md text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary-container animate-pulse">Mockable is listening...</h2>
+</div>
+<!-- Mic FAB -->
+<button class="w-20 h-20 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-[0_12px_30px_rgba(107,56,212,0.3)] hover:scale-105 active:scale-95 transition-all mic-wave z-20">
+<span class="material-symbols-outlined text-[32px]" data-icon="mic" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<p class="font-label-md text-label-md text-on-surface-variant mt-sm">Tap to pause</p>
+</section>
+<!-- Right Section: Live Transcript -->
+<section class="w-full md:w-[55%] h-full flex flex-col bg-surface p-lg relative">
+<div class="flex items-center justify-between mb-md pb-sm border-b border-surface-container-high">
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-outline" data-icon="history_edu">history_edu</span>
+                    Live Transcript
+                </h3>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="g_translate">g_translate</span>
+<span class="font-label-md text-label-md">Auto-detect</span>
+</div>
+</div>
+<!-- Transcript Canvas -->
+<div class="flex-1 overflow-y-auto transcript-scroll flex flex-col gap-lg pr-md pb-xl">
+<!-- AI Turn -->
+<div class="flex flex-col gap-xs max-w-[85%] self-start">
+<div class="flex items-center gap-xs ml-md">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="smart_toy">smart_toy</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Mockable AI</span>
+<span class="font-label-md text-label-md text-outline ml-sm text-[12px]">14:28</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary-fixed-dim/50 rounded-full rounded-tl-none px-md py-sm shadow-[0_4px_12px_rgba(107,56,212,0.03)] text-on-surface font-body-md text-body-md">
+                        Welcome to your frontend technical interview. Let's start with a foundational question. Can you explain the difference between `let`, `const`, and `var` in JavaScript, and when you would choose to use each?
+                    </div>
+</div>
+<!-- User Turn (English) -->
+<div class="flex flex-col gap-xs max-w-[85%] self-end">
+<div class="flex items-center gap-xs mr-md justify-end">
+<span class="font-label-md text-label-md text-outline mr-sm text-[12px]">14:29</span>
+<span class="font-label-md text-label-md text-on-surface-variant">You</span>
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="person">person</span>
+</div>
+</div>
+<div class="bg-secondary-fixed/30 border border-secondary-fixed-dim/50 rounded-full rounded-tr-none px-md py-sm shadow-[0_4px_12px_rgba(185,5,56,0.03)] text-on-surface font-body-md text-body-md text-right">
+                        Sure. `var` is function-scoped and allows hoisting, which can lead to unpredictable behavior if you're not careful. `let` and `const` were introduced in ES6 and are block-scoped. 
+                    </div>
+</div>
+<!-- User Turn (Continuation) -->
+<div class="flex flex-col gap-xs max-w-[85%] self-end mt-[-16px]">
+<div class="bg-secondary-fixed/30 border border-secondary-fixed-dim/50 rounded-full rounded-tr-none px-md py-sm shadow-[0_4px_12px_rgba(185,5,56,0.03)] text-on-surface font-body-md text-body-md text-right">
+                        I generally default to `const` for variables that won't be reassigned, and `let` when I know the value will change, like in a loop counter. I avoid `var` completely in modern codebases.
+                    </div>
+</div>
+<!-- AI Turn -->
+<div class="flex flex-col gap-xs max-w-[85%] self-start">
+<div class="flex items-center gap-xs ml-md">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="smart_toy">smart_toy</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">Mockable AI</span>
+<span class="font-label-md text-label-md text-outline ml-sm text-[12px]">14:31</span>
+</div>
+<div class="bg-surface-container-lowest border border-primary-fixed-dim/50 rounded-full rounded-tl-none px-md py-sm shadow-[0_4px_12px_rgba(107,56,212,0.03)] text-on-surface font-body-md text-body-md">
+                        That's a solid explanation. Now, let's talk about performance. How would you optimize a large list rendering in React? Also, feel free to answer in Arabic if you prefer, I understand you selected a bilingual test environment.
+                    </div>
+</div>
+<!-- User Turn (Arabic RTL Test) -->
+<div class="flex flex-col gap-xs max-w-[85%] self-end">
+<div class="flex items-center gap-xs mr-md justify-end">
+<span class="font-label-md text-label-md text-outline mr-sm text-[12px]">14:32</span>
+<span class="font-label-md text-label-md text-on-surface-variant">You</span>
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]" data-icon="person">person</span>
+</div>
+</div>
+<div class="bg-secondary-fixed/30 border border-secondary-fixed-dim/50 rounded-full rounded-tr-none px-md py-sm shadow-[0_4px_12px_rgba(185,5,56,0.03)] text-on-surface font-body-md text-body-md text-right" dir="rtl">
+                        أفضل طريقة للتعامل مع القوائم الطويلة في React هي استخدام تقنية الـ Virtualization، مثل مكتبة react-window أو react-virtualized. هذه التقنية تقوم بتقديم العناصر المرئية فقط على الشاشة، مما يقلل من استهلاك الذاكرة ويحسن الأداء بشكل كبير.
+                    </div>
+</div>
+<!-- Active Listening Indicator in Transcript -->
+<div class="flex flex-col gap-xs max-w-[85%] self-end mt-sm opacity-70 transition-opacity">
+<div class="flex items-center gap-xs mr-md justify-end">
+<span class="font-label-md text-label-md text-on-surface-variant">You are speaking...</span>
+</div>
+<div class="bg-secondary-fixed/10 border border-secondary-fixed-dim/20 rounded-full rounded-tr-none px-md py-sm flex items-center justify-center gap-1 w-16 h-10">
+<div class="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce" style="animation-delay: 0ms"></div>
+<div class="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce" style="animation-delay: 150ms"></div>
+<div class="w-1.5 h-1.5 bg-secondary rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+</div>
+</div>
+<!-- Spacer to ensure bottom padding for scroll -->
+<div class="h-10 shrink-0"></div>
+</div>
+<!-- Bottom Gradient Fade for Transcript -->
+<div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-surface to-transparent pointer-events-none rounded-b-xl"></div>
+</section>
+</main>
+</body></html>
