@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mockable - Interview Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#7b7486",
+                    "secondary-fixed-dim": "#ffb2b7",
+                    "outline-variant": "#cbc3d7",
+                    "inverse-surface": "#31302e",
+                    "on-background": "#1c1c1a",
+                    "on-secondary-fixed-variant": "#92002a",
+                    "on-surface": "#1c1c1a",
+                    "surface-container": "#f0ede9",
+                    "primary-container": "#8455ef",
+                    "secondary-fixed": "#ffdadb",
+                    "on-tertiary-fixed": "#102000",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#23005c",
+                    "tertiary-container": "#518200",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#acf847",
+                    "surface-variant": "#e5e2de",
+                    "on-surface-variant": "#494454",
+                    "surface-container-high": "#eae8e4",
+                    "primary": "#6b38d4",
+                    "primary-fixed-dim": "#d0bcff",
+                    "secondary": "#b90538",
+                    "on-primary-fixed-variant": "#5516be",
+                    "surface-dim": "#dcdad6",
+                    "on-secondary": "#ffffff",
+                    "background": "#fcf9f5",
+                    "on-tertiary-fixed-variant": "#304f00",
+                    "on-primary-container": "#fffbff",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#91db2a",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#f3f0ec",
+                    "inverse-primary": "#d0bcff",
+                    "secondary-container": "#dc2c4f",
+                    "primary-fixed": "#e9ddff",
+                    "surface-tint": "#6d3bd7",
+                    "tertiary": "#3f6700",
+                    "surface-bright": "#fcf9f5",
+                    "on-secondary-container": "#fffbff",
+                    "on-error-container": "#93000a",
+                    "surface": "#fcf9f5",
+                    "on-tertiary-container": "#f9ffea",
+                    "on-secondary-fixed": "#40000d",
+                    "surface-container-highest": "#e5e2de",
+                    "surface-container-low": "#f6f3ef"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "lg": "48px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "md": "24px",
+                    "sm": "12px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-xl": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "headline-xl-mobile": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-sm": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Plus Jakarta Sans"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Plus Jakarta Sans"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": [
+                            "28px",
+                            {"lineHeight": "36px", "fontWeight": "700"}
+                    ],
+                    "headline-xl": [
+                            "48px",
+                            {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}
+                    ],
+                    "headline-xl-mobile": [
+                            "36px",
+                            {"lineHeight": "44px", "fontWeight": "800"}
+                    ],
+                    "label-md": [
+                            "14px",
+                            {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}
+                    ],
+                    "headline-sm": [
+                            "20px",
+                            {"lineHeight": "28px", "fontWeight": "600"}
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {"lineHeight": "28px", "fontWeight": "400"}
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {"lineHeight": "32px", "fontWeight": "700"}
+                    ],
+                    "body-md": [
+                            "16px",
+                            {"lineHeight": "24px", "fontWeight": "400"}
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid theme('colors.surface-container-high');
+            box-shadow: 0 8px 30px rgba(107, 56, 212, 0.08);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, theme('colors.primary') 0%, theme('colors.secondary') 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, theme('colors.primary') 0%, theme('colors.secondary') 100%);
+            color: theme('colors.on-primary');
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(107, 56, 212, 0.2);
+        }
+
+        .btn-secondary {
+            background: theme('colors.surface-container-lowest');
+            color: theme('colors.primary');
+            border: 1px solid theme('colors.primary-fixed-dim');
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background: theme('colors.surface-container-low');
+            transform: scale(1.02);
+        }
+
+        .progress-ring {
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-body-md antialiased">
+<!-- Top Navigation Placeholder (Hidden for this specific result view flow to prioritize canvas, but maintaining semantic structure) -->
+<main class="flex-grow flex flex-col items-center py-lg px-margin-mobile md:px-margin-desktop w-full max-w-screen-xl mx-auto gap-lg">
+<!-- Celebratory Hero Section -->
+<section class="w-full flex flex-col items-center text-center gap-md">
+<h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-on-surface">
+                Great job on your <span class="gradient-text">Interview!</span>
+</h1>
+<!-- Circular Progress Ring -->
+<div class="relative w-[200px] h-[200px] my-base">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<circle cx="60" cy="60" fill="none" r="54" stroke="#f0ede9" stroke-width="12"></circle>
+<!-- 85% dasharray calculation: 2 * pi * 54 = 339.292. 85% of 339.292 = 288.39 -->
+<circle class="progress-ring" cx="60" cy="60" fill="none" r="54" stroke="#acf847" stroke-dasharray="339.292" stroke-dashoffset="50.9" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-xl text-headline-xl text-primary font-bold">85</span>
+<span class="font-label-md text-label-md text-outline">OUT OF 100</span>
+</div>
+</div>
+<!-- Summary Paragraph -->
+<p class="max-w-2xl font-body-lg text-body-lg text-on-surface-variant">
+                You demonstrated strong technical knowledge and a confident demeanor. Your answers were generally well-structured, but there's room to improve the conciseness of your examples to make an even stronger impact.
+            </p>
+</section>
+<div class="w-full grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Detailed Breakdown Section -->
+<section class="glass-card rounded-lg p-md md:col-span-7 flex flex-col gap-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Detailed Breakdown</h2>
+<div class="flex flex-col gap-sm">
+<!-- Technical Score -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface">Technical Accuracy</span>
+<span class="font-label-md text-label-md text-primary">90%</span>
+</div>
+<div class="w-full bg-surface-container h-4 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 90%"></div>
+</div>
+</div>
+<!-- Communication -->
+<div class="flex flex-col gap-xs mt-base">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface">Communication</span>
+<span class="font-label-md text-label-md text-tertiary-fixed-dim">80%</span>
+</div>
+<div class="w-full bg-surface-container h-4 rounded-full overflow-hidden">
+<div class="bg-tertiary-fixed-dim h-full rounded-full" style="width: 80%"></div>
+</div>
+</div>
+<!-- Confidence -->
+<div class="flex flex-col gap-xs mt-base">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface">Confidence</span>
+<span class="font-label-md text-label-md text-secondary">85%</span>
+</div>
+<div class="w-full bg-surface-container h-4 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Relevance -->
+<div class="flex flex-col gap-xs mt-base">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface">Relevance</span>
+<span class="font-label-md text-label-md text-primary-container">88%</span>
+</div>
+<div class="w-full bg-surface-container h-4 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 88%"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- What to Improve Section -->
+<section class="md:col-span-5 flex flex-col gap-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">What to Improve</h2>
+<div class="flex flex-col gap-sm">
+<!-- Tip Card 1 -->
+<div class="bg-primary-fixed rounded-[1rem] p-sm flex gap-sm items-start shadow-sm border border-primary-fixed-dim">
+<div class="bg-primary-container text-on-primary-container p-2 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">timer</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-primary-fixed">Conciseness</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Try to keep your STAR method examples under 2 minutes. You tended to ramble on the conflict resolution question.</p>
+</div>
+</div>
+<!-- Tip Card 2 -->
+<div class="bg-error-container rounded-[1rem] p-sm flex gap-sm items-start shadow-sm border border-secondary-fixed-dim">
+<div class="bg-secondary-container text-on-secondary-container p-2 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-error-container">Action Focus</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Focus more on 'I' instead of 'We' when describing project successes to highlight your specific contributions.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col sm:flex-row justify-center gap-md mt-lg">
+<button class="btn-secondary rounded-full px-xl py-4 font-label-md text-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">arrow_back</span>
+                Back to Dashboard
+            </button>
+<button class="btn-primary rounded-full px-xl py-4 font-label-md text-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">replay</span>
+                Try Again
+            </button>
+</div>
+</main>
+<!-- Footer Component from JSON -->
+<footer class="bg-surface-container-lowest dark:bg-inverse-surface w-full py-xl flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop gap-gutter flat mt-auto">
+<div class="font-headline-sm text-headline-sm text-primary dark:text-primary-fixed-dim">
+            Mockable
+        </div>
+<nav class="flex flex-wrap justify-center gap-md">
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Cookie Policy</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Support</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">Contact</a>
+</nav>
+<div class="font-body-md text-body-md text-secondary dark:text-secondary-fixed-dim">
+            © 2024 Mockable AI. Perfecting the art of the interview.
+        </div>
+</footer>
+</body></html>
